@@ -1,2 +1,2 @@
 # sqlDatabase
-Esercizi svolti nell'ambito Generation **da Steven**
+Esercizi svolti nell'ambito Generation 
