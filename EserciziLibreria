@@ -34,29 +34,16 @@ order by autore.Cognome ASC;
 select romanzo.Titolo,autore.Nome,autore.Cognome
 from romanzo,autore
 where autore.ID=romanzo.autore and autore.DataNascita>=1901 and autore.DataNascita<2001
-order by autore.Cognome ASC;
-
-
-select romanzo.Titolo,autore.Nome,autore.Cognome
-from romanzo,autore
-where autore.ID=romanzo.autore and autore.DataNascita>=1901 
-order by autore.Nome ASC;
-
-
-select romanzo.Titolo,autore.Nome,autore.Cognome,romanzo.AnnoPubblicazione
-from romanzo,autore
-where autore.ID=romanzo.autore and autore.DataNascita>=1901  and autore.DataNascita<=2000
-order by romanzo.AnnoPubblicazione ASC;
-
+order by autore.Cognome,autore.Nome
 //8
 select romanzo.Titolo,romanzo.AnnoPubblicazione
 from romanzo,autore
-where autore.ID=romanzo.autore and !(autore.DataMorte<2022) 
+where autore.ID=romanzo.autore and autore.DataMorte is null
 
 //9
 select romanzo.Titolo
 from romanzo,autore
-where autore.ID=romanzo.autore and (!(autore.DataMorte<2022) or !(autore.LuogoMorte='Torino')) 
+where autore.ID=romanzo.autore and autore.DataMorte is null or !(autore.LuogoMorte='Torino')) 
 
 //10
 select romanzo.Titolo,romanzo.AnnoPubblicazione
