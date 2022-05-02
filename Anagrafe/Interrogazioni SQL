@@ -12,5 +12,19 @@ Osservazioni:
 select persona.Nome,Città.Regione
 from persona, Città
 where persona.CittàNascita=Città.nome and persona.Età>=18
+//esercizio 2
+select *
+from Persona as x join Genia on Genia.figlio=x.nome 
+    join Persona as y on y.nome=Genia.genitore
+   where x.CittàNascita=y.CittàNascita  
 
 
+//esercizio 3    città in cui è nato almeno un genitore di oltre 50 anni
+select distinct città.nome
+from Genia join persona on genia.genitore=persona.nome
+    join città on persona.CittàNascita=città.nome
+where persona.età>50
+
+//esercizio 4
+select distinct k.Genitore as Nonni
+from Genia k join Genia m on m.Genitore = k.Figlio
