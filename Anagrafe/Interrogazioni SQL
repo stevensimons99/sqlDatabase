@@ -1,0 +1,16 @@
+/*
+Persona(Nome, Età, Reddito, Sesso, CittàNascita)
+Città(Nome, Regione)
+Genia(Figlio, Genitore)
+
+Osservazioni:
+- il dominio di Sesso è {‘M’, ‘F’}
+- per semplicità abbiamo omesso i vincoli di foreign key
+*/
+
+//esercizio 1
+select persona.Nome,Città.Regione
+from persona, Città
+where persona.CittàNascita=Città.nome and persona.Età>=18
+
+
