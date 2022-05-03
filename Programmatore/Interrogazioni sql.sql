@@ -65,3 +65,6 @@ from programmatore join autore on programmatore.codice=autore.codice
 group by programma.anno    
 /*esercizio 7 Per ogni linguaggio calcolare quanti sono in media gli
 autori dei programmi scritti in quel linguaggio.*/
+select programma.linguaggio,count(autore.codice)
+from autore join programma on autore.id=programma.id
+group by programma.linguaggio
