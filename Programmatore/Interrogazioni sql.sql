@@ -35,11 +35,11 @@ order by programmatore.nome
 codice e l'anno in cui ha scritto il primo programma in un
 linguaggio diverso da Java.
 */
-select programmatore.codice,programma.anno 
+select programmatore.codice,min(programma.anno) 
 from programmatore join autore on programmatore.codice=autore.codice
     join programma on autore.id=programma.id
 where programmatore.categoria=10 and programma.linguaggio!="Java"    
-
+group by programmatore.codice
 /*esercizio 4 Calcolare le coppie dei codici di programmatori che sono stati
 coautori di almeno un programma scritto in Python.
 */
