@@ -43,7 +43,7 @@ group by programmatore.codice
 /*esercizio 4 Calcolare le coppie dei codici di programmatori che sono stati
 coautori di almeno un programma scritto in Python.
 */
-select distinct p1.codice,p2.codice
+select distinct p1.codice as a,p2.codice as b
 from autore p1 join autore p2 on p1.id=p2.id
     join programma on p1.id=programma.id
 where programma.linguaggio="python" and p1.codice!=p2.codice
@@ -65,6 +65,6 @@ from programmatore join autore on programmatore.codice=autore.codice
 group by programma.anno    
 /*esercizio 7 Per ogni linguaggio calcolare quanti sono in media gli
 autori dei programmi scritti in quel linguaggio.*/
-select programma.linguaggio,count(autore.codice)/count(programma.linguaggio)
+select programma.linguaggio,count(autore.codice)/count(distinct programma.id)
 from autore join programma on autore.id=programma.id
 group by programma.linguaggio
