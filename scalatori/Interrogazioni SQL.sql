@@ -19,7 +19,12 @@ tale numero è maggiore di 1. Nel risultato le nazioni dello
 stesso continente devono essere mostrati in tuple contigue, e
 le tuple relative allo stesso continente devono essere ordinate
 per anno.*/
-
+use scalatori;
+select nazione.nome,scalata.anno,count(scalata.nazione),count(scalata.anno)
+from scalatore join scalata on scalatore.cf=scalata.scalatore 
+    join nazione on nazione.nome=scalata.nazione
+group by nazione.nome, scalata.anno having count(scalata.nazione)>1
+order by nazione.continente,scalata.anno
 /*QUERY 6: Calcolare codice fiscale, nazione di nascita, continente di
 nascita di ogni scalatore nato in un continente diverso
 dall’America, e, solo se egli ha effettuato almeno una scalata,
