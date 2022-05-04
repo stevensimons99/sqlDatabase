@@ -13,16 +13,24 @@ e dal continente in cui si trova
 nazione è stata effettuata e dall’anno in cui è stata effettuata
 */
 
+/*QUERY 7: Per ogni nazione e per ogni anno, calcolare il numero di
+scalate effettuate in quella nazione e in quell’anno, ma solo se
+tale numero è maggiore di 1. Nel risultato le nazioni dello
+stesso continente devono essere mostrati in tuple contigue, e
+le tuple relative allo stesso continente devono essere ordinate
+per anno.*/
+
 /*QUERY 6: Calcolare codice fiscale, nazione di nascita, continente di
 nascita di ogni scalatore nato in un continente diverso
 dall’America, e, solo se egli ha effettuato almeno una scalata,
 affiancare queste informazioni alle nazioni in cui ha effettuato
 scalate.*/
-select scalatore.cf,scalatore.nazioneNascita,nazione.continente
+use scalatori;
+select scalatore.cf,scalatore.nazioneNascita,nazione.continente,scalata.nazione
 from scalatore join scalata on scalatore.cf=scalata.scalatore 
-    join nazione on nazione.nome=scalata.nazione
+   left join nazione on nazione.nome=scalata.nazione
 where nazione.continente<>"America"
-    
+
 
 
 /*QUERY 5 : Per ogni continente, calcolare il numero di scalate effettuate
