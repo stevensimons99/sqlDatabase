@@ -13,6 +13,15 @@ e dal continente in cui si trova
 nazione è stata effettuata e dall’anno in cui è stata effettuata
 */
 
+/*QUERY 8: Per ogni nazione N, calcolare il numero medio di
+scalate effettuate all’anno in N da scalatori nati in
+nazioni diverse da N.*/
+use scalatori;
+select nazione.nome,count(scalata.anno)/count(scalata.scalatore)
+from nazione join scalata on nazione.nome=scalata.nazione
+    join scalatore on scalata.scalatore=scalatore.cf
+where scalata.nazione!=scalatore.nazionenascita  
+group by nazione.nome
 /*QUERY 7: Per ogni nazione e per ogni anno, calcolare il numero di
 scalate effettuate in quella nazione e in quell’anno, ma solo se
 tale numero è maggiore di 1. Nel risultato le nazioni dello
@@ -60,10 +69,11 @@ group by nazione.nome
 /*QUERY 3 : Calcolare le nazioni (mostrando, per ciascuna, anche il
 continente) nelle quali è stata effettuata almeno una scalata
 da uno scalatore minorenne.*/
+use scalatori;
 select nazione.nome,nazione.continente
 from scalatore join scalata on scalatore.cf=scalata.scalatore 
     join nazione on nazione.nome=scalata.nazione
-where scalatore.annonascita>2004
+where (scalata.anno-scalatore.annonascita<18
 
 
 /*QUERY 2 : Per ogni scalatore nato prima del 1980, calcolare
